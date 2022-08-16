@@ -4,10 +4,12 @@ return [
     'name' => 'Customer',
 
     'menus' => [
+        ['header' => 'User Management', 'order' => 2],
         [
             'text' => 'Customers',
             'icon' => 'fas fa-users',
             'can' => 'customers-read',
+            'order' => 3,
             'submenu' => [
                 [
                     'text'      => 'Add Customer',
