@@ -2,8 +2,7 @@
 
 use Modules\Customer\Http\Controllers\CustomerController;
 
-
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'admin']], function (){
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'admin']], function () {
     Route::resource('customers', CustomerController::class);
 
     Route::get('paid-customers', [CustomerController::class, 'creditPaid'])->name('customers.paid');

@@ -3,8 +3,8 @@
 namespace Modules\Customer\Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Seeder;
 
 class CustomerDatabaseSeeder extends Seeder
 {
@@ -17,7 +17,7 @@ class CustomerDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        if (app()->environment() == 'local'){
+        if (app()->environment() == 'local') {
             for ($x = 0; $x <= 20; $x++) {
                 $user = User::factory()->create();
                 $user->assignRole('Customer');

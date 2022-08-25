@@ -6,10 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
-use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
 class CustomerDataTable extends DataTable
@@ -18,7 +15,7 @@ class CustomerDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addIndexColumn()
-            ->editColumn('created_at', fn($model) => format_date($model->created_at))
+            ->editColumn('created_at', fn ($model) => format_date($model->created_at))
             ->addColumn('action', 'customer::action')
             ->setRowId('id');
     }
@@ -54,15 +51,15 @@ class CustomerDataTable extends DataTable
                 ->exportable(false)
                 ->orderable(false)
                 ->title('#'),
-            Column::make('name')->title(__("Customer Name")),
-            Column::make('address')->title(__("Address 1")),
-            Column::make('mobile')->title(__("Mobile")),
-            Column::make('email')->title(__("Email")),
-            Column::make('city')->title(__("City")),
-            Column::make('state')->title(__("State")),
-            Column::make('zip')->title(__("ZIP")),
-            Column::make('country')->title(__("Country")),
-            Column::make('created_at')->title(__("Created At")),
+            Column::make('name')->title(__('Customer Name')),
+            Column::make('address')->title(__('Address 1')),
+            Column::make('mobile')->title(__('Mobile')),
+            Column::make('email')->title(__('Email')),
+            Column::make('city')->title(__('City')),
+            Column::make('state')->title(__('State')),
+            Column::make('zip')->title(__('ZIP')),
+            Column::make('country')->title(__('Country')),
+            Column::make('created_at')->title(__('Created At')),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
@@ -75,6 +72,6 @@ class CustomerDataTable extends DataTable
 
     protected function filename(): string
     {
-        return 'Customers_' . date('YmdHis');
+        return 'Customers_'.date('YmdHis');
     }
 }

@@ -34,7 +34,7 @@ class CustomerController extends Controller
         $customer = User::create([
             'name' => $validated['customer_name'],
             'email' => $validated['customer_email'],
-            'password'=> bcrypt('password'),
+            'password' => bcrypt('password'),
             'avatar' => 'https://avatars.dicebear.com/api/adventurer/'.str($validated['customer_name'])->slug().'.svg',
             'mobile' => $validated['customer_mobile'],
             'phone' => $validated['phone'],
@@ -54,7 +54,7 @@ class CustomerController extends Controller
 
         return response()->json([
             'message' => __('Customer Created Successfully'),
-            'redirect' => route('admin.customers.index')
+            'redirect' => route('admin.customers.index'),
         ]);
     }
 
@@ -90,15 +90,15 @@ class CustomerController extends Controller
 
         return response()->json([
             'message' => __('Customer Updated Successfully'),
-            'redirect' => route('admin.customers.index')
+            'redirect' => route('admin.customers.index'),
         ]);
     }
 
     public function destroy(User $customer)
     {
-        if (!$customer->hasRole('Customer')){
+        if (! $customer->hasRole('Customer')) {
             return response()->json([
-                'message' => __("This user is not a valid customer")
+                'message' => __('This user is not a valid customer'),
             ], 403);
         }
 
@@ -106,7 +106,7 @@ class CustomerController extends Controller
 
         return response()->json([
             'message' => __('Customer Deleted Successfully'),
-            'redirect' => route('admin.customers.index')
+            'redirect' => route('admin.customers.index'),
         ]);
     }
 
